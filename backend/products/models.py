@@ -1,7 +1,8 @@
 from django.db import models
 
 from core.constants import MAX_NAME_LENGTH
-from core.models import CodeNameGroupSubgroupModel
+from core.models import (CodeNameGroupSubgroupModel,
+                         ProductsummarySizeColorModel)
 
 
 class CodeSupplierBase(CodeNameGroupSubgroupModel):
@@ -11,26 +12,18 @@ class CodeSupplierBase(CodeNameGroupSubgroupModel):
         verbose_name_plural = 'Коды поставщиков 1с'
 
 
-class CodeSupplierFile(CodeNameGroupSubgroupModel):
-    product_summary = models.CharField(
-        max_length=MAX_NAME_LENGTH,
-        verbose_name='Наименование',
-        null=True,
-        blank=True,
-    )
-    size = models.CharField(
-        max_length=MAX_NAME_LENGTH,
-        verbose_name='Наименование',
-        null=True,
-        blank=True,
-    )
-    color = models.CharField(
-        max_length=MAX_NAME_LENGTH,
-        verbose_name='Наименование',
-        null=True,
-        blank=True,
-    )
+class CodeSupplierFile(CodeNameGroupSubgroupModel,
+                       ProductsummarySizeColorModel):
 
     class Meta:
         verbose_name = 'код поставщика в файле'
         verbose_name_plural = 'Коды поставщиков в файле'
+
+
+class PriceSupplier(CodeNameGroupSubgroupModel,
+                    ProductsummarySizeColorModel):
+    price = models.FloatField('Цена')
+
+    class Meta:
+        verbose_name = 'прайс поставщика'
+        verbose_name_plural = 'Прайсы'

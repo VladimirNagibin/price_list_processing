@@ -29,3 +29,27 @@ class CodeNameGroupSubgroupModel(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ProductsummarySizeColorModel(models.Model):
+    product_summary = models.CharField(
+        max_length=MAX_NAME_LENGTH,
+        verbose_name='Наименование',
+        null=True,
+        blank=True,
+    )
+    size = models.CharField(
+        max_length=MAX_NAME_LENGTH,
+        verbose_name='Наименование',
+        null=True,
+        blank=True,
+    )
+    color = models.CharField(
+        max_length=MAX_NAME_LENGTH,
+        verbose_name='Наименование',
+        null=True,
+        blank=True,
+    )
+
+    class Meta:
+        abstract = True

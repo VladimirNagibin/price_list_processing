@@ -1,6 +1,6 @@
 from django.db import models
 
-from core.constants import MAX_NAME_LENGTH
+# from core.constants import MAX_NAME_LENGTH
 from core.models import (CodeNameGroupSubgroupModel,
                          ProductsummarySizeColorModel)
 

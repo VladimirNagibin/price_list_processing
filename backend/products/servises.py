@@ -16,7 +16,7 @@ from .constants import (FILE_PRICES, FOLDER, URL_BASE, URL_PRICES,
 from .models import CodeSupplierFile, CodeSupplierBase, PriceSupplier
 
 CODE_SUPPLIER = 564
-
+FILE_CHANGE = '11 kolgotki det.xlsx'
 
 def get_prices_text(url=URL_PRICES):
     try:
@@ -132,6 +132,8 @@ def parse_file(file, current_code):
     for s in inf.itertuples():
         if not np.isnan(s[PRODUCT_SIGN_COLUMN]):
             product_name = s[PRODUCT_NAME_COLUMN]
+            if file == f'{FOLDER}tmp/{FILE_CHANGE}':
+                product_name = product_name.replace("cont", "Conte")
             product_price = s[PRODUCT_PRICE_COLUMN]
             product_price = 0 if np.isnan(product_price) else product_price
             sizes.clear()

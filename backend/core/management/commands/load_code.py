@@ -2,7 +2,7 @@ import pandas as pd
 import sqlite3
 
 from django.core.management.base import BaseCommand
-from django.db.models import Max
+# from django.db.models import Max
 
 
 class Command(BaseCommand):
@@ -23,10 +23,10 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         ...
-        #self.load_data(
-        #    'data/Tab_out1.txt',
-        #    'products_codesupplierbase',
-        #)
+        self.load_data(
+            'data/Tab_out1.txt',
+            'products_codesupplierbase',
+        )
         #self.load_data(
         #    'data/Tab_out.txt',
         #    'products_codesupplierfile',

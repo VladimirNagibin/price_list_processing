@@ -18,6 +18,7 @@ from .models import CodeSupplierFile, CodeSupplierBase, PriceSupplier
 CODE_SUPPLIER = 564
 FILE_CHANGE = '11 kolgotki det.xlsx'
 
+
 def get_prices_text(url=URL_PRICES):
     try:
         response = requests.get(url)
@@ -55,9 +56,9 @@ def get_file(public_key, file_name):
     try:
         response = requests.get(final_url)
     except requests.ConnectionError:
-        raise ConnectionError(f'Connection error: {final_url}')
+        raise ConnectionError(f'Connection error: {final_url} {file_name}')
     if response.status_code != 200:
-        raise ConnectionError(f'Error status code: {final_url}')
+        raise ConnectionError(f'Error status code: {final_url} {file_name}')
     download_url = response.json()['href']
     return get_file_url(download_url, f'{FOLDER}tmp/{file_name}')
 

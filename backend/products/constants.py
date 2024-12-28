@@ -13,9 +13,9 @@ FILE_PRICES = (
     ('Домашняя одежда', '10 angel stori.xlsx'),
     # ('Эльдар (трикотаж)', '9 eldar.xlsx'),
     ('Белье МУЖСКОЕ', '6 griff muzckoe.xlsx'),
-    ('Белье корректирующее и классическое (MITEX)', '7 mitex.xlsx'),
+    # ('Белье корректирующее и классическое (MITEX)', '7 mitex.xlsx'),
     # ('Носки,тапки', '17 noskitap.xlsx'),
-    ('Купальники', '8 kypalniki.xlsx'),
+    # ('Купальники', '8 kypalniki.xlsx'),
     # ('Наушники HOBBY LINE', '16 Nausniki.xlsx'),
     # ('Сувениры новогодние', '15 suvenir.xlsx'),
     ('OPIUM SPORT', '14 varezki.xlsx'),  # Подмена файла
@@ -31,7 +31,7 @@ PRODUCT_SIGN_COLUMN = 1
 PRODUCT_IMAGE_COLUMN = 2
 PRODUCT_NAME_COLUMN = 4
 PRODUCT_SIZE_RANGE = range(15, 24)
-PRODUCT_PRICE_COLUMN = 36
+PRODUCT_PRICE_COLUMN = 33  # 36
 PRODUCT_COLOR_COLUMN = 4
 PRODUCT_START_REMAINS_COLUMN = 15
 PRODUCT_SKIP_HEAD_ROWS = range(7)

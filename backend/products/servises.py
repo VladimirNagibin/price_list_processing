@@ -1,5 +1,6 @@
 import datetime
 import numpy as np
+import os
 import pandas as pd
 import requests
 # import xlrd
@@ -12,7 +13,8 @@ from .constants import (FILE_PRICES, FOLDER, URL_BASE, URL_PRICES,
                         PRODUCT_SIGN_COLUMN, PRODUCT_IMAGE_COLUMN,
                         PRODUCT_NAME_COLUMN, PRODUCT_SIZE_RANGE,
                         PRODUCT_PRICE_COLUMN, PRODUCT_COLOR_COLUMN,
-                        PRODUCT_START_REMAINS_COLUMN, PRODUCT_SKIP_HEAD_ROWS)
+                        PRODUCT_START_REMAINS_COLUMN, PRODUCT_SKIP_HEAD_ROWS,
+                        FILE_PRICES_2)
 from .models import CodeSupplierFile, CodeSupplierBase, PriceSupplier
 
 CODE_SUPPLIER = 564
@@ -69,7 +71,7 @@ def get_files():
     mydivs = soup.find_all("div", {"class": "right_block wide_"})[0]
     for tag in mydivs.find_all("li"):
         try:
-            content = tag.contents[2].attrs['href']
+            content = tag.contents[1].attrs['href']
             text = tag.text
             files.append((text, content))
         except Exception:
@@ -188,3 +190,58 @@ def parse_files():
     for _, file in FILE_PRICES:
         current_code = parse_file(f'{FOLDER}tmp/{file}', current_code)
         # break
+
+
+def download_public_folder(public_url: str, save_path: str = "downloads"):
+    # Получаем метаданные папки
+    api_url = "https://cloud-api.yandex.net/v1/disk/public/resources"
+    params = {
+        "public_key": public_url,
+        "limit": 1000  # Максимальное количество элементов
+    }
+    
+    response = requests.get(api_url, params=params)
+    if response.status_code != 200:
+        print("Ошибка доступа к папке")
+        return
+
+    data = response.json()
+    # print(data)
+    process_items(data["_embedded"]["items"], save_path)
+
+def process_items(items, path):
+    os.makedirs(path, exist_ok=True)
+    
+    for item in items:
+        item_name = item["name"]
+        item_type = item["type"]
+        
+        if item_type == "file":
+            file_url = item["file"]
+            #download_file(file_url, os.path.join(path, item_name))
+            download_file(file_url, item_name)
+        elif item_type == "dir":
+            new_dir = os.path.join(path, item_name)
+            download_public_folder(item["public_url"], new_dir)
+
+def download_file(url: str, save_path1: str):
+    save_path = f'{FOLDER}tmp/{save_path1}'
+    for f1, f2 in FILE_PRICES_2:
+        if f1 == save_path1:
+            save_path = f'{FOLDER}tmp/{f2}'
+            break
+    try:
+        response = requests.get(url, stream=True)
+        if response.status_code == 200:
+            with open(save_path, 'wb') as f:
+                for chunk in response.iter_content(1024):
+                    f.write(chunk)
+            print(f"Файл сохранен: {save_path}")
+    except Exception as e:
+        print(f"Ошибка загрузки {url}: {str(e)}")
+
+# Использование
+# if __name__ == "__main__":
+def save_files1():
+    folder_url = "https://disk.yandex.ru/d/FPqkU01JlQbY-Q"
+    download_public_folder(folder_url)

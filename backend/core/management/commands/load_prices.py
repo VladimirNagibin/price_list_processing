@@ -1,12 +1,12 @@
 from django.core.management.base import BaseCommand
 
-from products.servises import parse_files, save_files
+from products.servises import parse_files, save_files1
 
 
 class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
-        save_files()
+        save_files1()
         print('files saved')
         parse_files()
 

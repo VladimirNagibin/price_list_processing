@@ -27,11 +27,35 @@ FILE_PRICES = (
     ('Домашняя обувь', '21 dom.obuv.xlsx'),
 )
 
+FILE_PRICES_2 = (
+    ('leggins.xlsx', '19 leggins.xlsx'),
+    ('kolgotki-classica.xlsx', '1 kolgotki.xlsx'),
+    ('kolgotki-detstvo.xlsx', '11 kolgotki det.xlsx'),
+    ('kolgotki-azzuro.xlsx', '1 kolgotki 2.xlsx'),
+    ('korsetnoe.xlsx', '3 korsetnoe(italia,espania).xlsx'),
+    ('beshovnoe.xlsx', '2 intimidea.xlsx'),
+    ('domashka.xlsx', '10 angel stori.xlsx'),
+    # ('Эльдар (трикотаж)', '9 eldar.xlsx'),
+    ('muzckoe.xlsx', '6 griff muzckoe.xlsx'),
+    # ('Белье корректирующее и классическое (MITEX)', '7 mitex.xlsx'),
+    # ('Носки,тапки', '17 noskitap.xlsx'),
+    ('kupalniki.xlsx', '8 kypalniki.xlsx'),
+    # ('Наушники HOBBY LINE', '16 Nausniki.xlsx'),
+    # ('Сувениры новогодние', '15 suvenir.xlsx'),
+    ('OPIUM-sport.xlsx', '14 varezki.xlsx'),  # Подмена файла
+    ('noski.xlsx', '12 noski.xlsx'),
+    ('zenskie-plavki.xlsx', '5 malemi.xlsx'),
+    # ('Бельё DIVA SHARM прибалтика (большие размеры)', '18 DIVA.xlsx'),
+    ('termobelio.xlsx', '4 termobelio.xlsx'),
+    # ('ДЕТСКОЕ шапки, перчатки', '20 SHAPKI.xlsx'),
+    ('dom-obuv.xlsx', '21 dom.obuv.xlsx'),
+)
+
 PRODUCT_SIGN_COLUMN = 1
 PRODUCT_IMAGE_COLUMN = 2
-PRODUCT_NAME_COLUMN = 4
-PRODUCT_SIZE_RANGE = range(15, 24)
-PRODUCT_PRICE_COLUMN = 33  # 36
-PRODUCT_COLOR_COLUMN = 4
-PRODUCT_START_REMAINS_COLUMN = 15
+PRODUCT_NAME_COLUMN = 3  # 4
+PRODUCT_SIZE_RANGE = range(14, 23)  # range(15, 24)
+PRODUCT_PRICE_COLUMN = 32  # 33  # 36
+PRODUCT_COLOR_COLUMN = 3  # 4
+PRODUCT_START_REMAINS_COLUMN = 14  # 15
 PRODUCT_SKIP_HEAD_ROWS = range(7)

@@ -199,7 +199,7 @@ def download_public_folder(public_url: str, save_path: str = "downloads"):
         "public_key": public_url,
         "limit": 1000  # Максимальное количество элементов
     }
-    
+
     response = requests.get(api_url, params=params)
     if response.status_code != 200:
         print("Ошибка доступа к папке")
@@ -211,11 +211,11 @@ def download_public_folder(public_url: str, save_path: str = "downloads"):
 
 def process_items(items, path):
     os.makedirs(path, exist_ok=True)
-    
+
     for item in items:
         item_name = item["name"]
         item_type = item["type"]
-        
+
         if item_type == "file":
             file_url = item["file"]
             #download_file(file_url, os.path.join(path, item_name))
@@ -223,6 +223,7 @@ def process_items(items, path):
         elif item_type == "dir":
             new_dir = os.path.join(path, item_name)
             download_public_folder(item["public_url"], new_dir)
+
 
 def download_file(url: str, save_path1: str):
     save_path = f'{FOLDER}tmp/{save_path1}'
@@ -239,6 +240,7 @@ def download_file(url: str, save_path1: str):
             print(f"Файл сохранен: {save_path}")
     except Exception as e:
         print(f"Ошибка загрузки {url}: {str(e)}")
+
 
 # Использование
 # if __name__ == "__main__":

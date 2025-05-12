@@ -209,6 +209,7 @@ def download_public_folder(public_url: str, save_path: str = "downloads"):
     # print(data)
     process_items(data["_embedded"]["items"], save_path)
 
+
 def process_items(items, path):
     os.makedirs(path, exist_ok=True)
 

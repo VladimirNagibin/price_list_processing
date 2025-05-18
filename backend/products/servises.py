@@ -31,7 +31,7 @@ def get_prices_text(url=URL_PRICES):
     return response.text
 
 
-def get_file_url(url, file_name_new):
+def get_file_url(url, file_name_new: str):
     try:
         download_response = requests.get(url)
     except requests.ConnectionError:

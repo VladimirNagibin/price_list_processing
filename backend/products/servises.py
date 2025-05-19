@@ -10,7 +10,7 @@ from django.db.models import Max
 from urllib.parse import urlencode
 
 from .constants import (FILE_PRICES, FOLDER, URL_BASE, URL_PRICES,
-                        PRODUCT_SIGN_COLUMN, PRODUCT_IMAGE_COLUMN,
+                        PRODUCT_SIGN_COLUMN,  # PRODUCT_IMAGE_COLUMN,
                         PRODUCT_NAME_COLUMN, PRODUCT_SIZE_RANGE,
                         PRODUCT_PRICE_COLUMN, PRODUCT_COLOR_COLUMN,
                         PRODUCT_START_REMAINS_COLUMN, PRODUCT_SKIP_HEAD_ROWS,

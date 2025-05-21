@@ -65,7 +65,7 @@ def get_file(public_key, file_name):
     return get_file_url(download_url, f'{FOLDER}tmp/{file_name}')
 
 
-def get_files():
+def get_files() -> list[tuple[str, str]]:
     files = []
     soup = BeautifulSoup(get_prices_text(), 'lxml')
     mydivs = soup.find_all("div", {"class": "right_block wide_"})[0]

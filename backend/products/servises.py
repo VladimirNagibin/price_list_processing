@@ -21,7 +21,7 @@ CODE_SUPPLIER = 564
 FILE_CHANGE = '11 kolgotki det.xlsx'
 
 
-def get_prices_text(url=URL_PRICES):
+def get_prices_text(url=URL_PRICES) -> str:
     try:
         response = requests.get(url)
     except requests.ConnectionError:

@@ -92,6 +92,7 @@ def save_files():
                 break
         # break
 
+
 def get_code(supplier, product, size, color):
     try:
         vals = CodeSupplierFile.objects.filter(
